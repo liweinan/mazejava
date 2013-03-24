@@ -15,8 +15,7 @@ import io.maze.finder.PathFinder;
 public class PlayMaze {
 
     public static final void main(String[] args) {
-        Maze maze = MazeFactory.createMaze(30, 30);
-        maze.print();
+        Maze maze = MazeFactory.createMaze(16, 9);
         PathFinder finder = new DefaultPathFinder();
         finder.solve(maze);
         maze.print();

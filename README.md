@@ -51,6 +51,43 @@ From the log you can see how the maze is generated:
 	|         V |
 	+---+---+   +
 
+Now you can try to use PathFinder to solve the maze:
+
+	PathFinder finder = new DefaultPathFinder();
+	finder.solve(maze);
+
+And print it:
+
+	maze.print();
+
+Now let's have some fun:
+
+	Maze maze = MazeFactory.createMaze(16, 9);
+	PathFinder finder = new DefaultPathFinder();
+	finder.solve(maze);
+	maze.print();
+
+	+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+	  > |     *   *   *   *   *   *   * |                           |
+	+   +---+   +---+---+---+---+---+   +---+   +---+   +---+---+   +
+	| *   *   * |           |       | *   * |   |       |           |
+	+---+---+---+   +---+   +   +---+---+   +---+   +---+   +---+---+
+	|       |   | *   * |       | *   * | *   * |   |               |
+	+   +   +   +   +   +---+---+   +   +---+   +   +---+---+---+---+
+	|   |       | * | *   *   *   * | *     | * |   |               |
+	+   +---+---+   +---+---+---+---+   +---+   +   +   +---+---+   +
+	| *   *   *   * |               | *   *   * |       |   |       |
+	+   +---+---+---+---+---+---+   +---+---+---+   +---+   +   +---+
+	| * | *   *   *   *   *   * |     *   * |               |       |
+	+   +   +---+---+---+---+   +---+   +   +---+---+---+---+---+   +
+	| * | *   * |           | *   *   * | * | *   *   *   *   *   * |
+	+   +---+   +   +   +---+---+---+---+   +   +---+---+---+---+   +
+	| *   *   * |   |                   | * | * |           | *   * |
+	+---+---+---+   +---+---+---+   +---+   +   +   +   +---+   +---+
+	|                           |         *   * |   |         *   V |
+	+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+   +
+
+
 ## Reference
 
 * [Practical algorithms and code optimization: maze generation ](http://ilay.org/yann/articles/maze/index.en.html)
