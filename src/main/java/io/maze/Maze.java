@@ -21,6 +21,20 @@ public class Maze {
     private Stack<CellState> histories = new Stack<CellState>();
     private int visited_cnt = 0;
 
+    public CellState getCell(int x, int y) {
+        if (in_scope(x, y))
+            return cells[x][y];
+        return null;
+    }
+
+    public CellState getIn() {
+        return in;
+    }
+
+    public CellState getOut() {
+        return out;
+    }
+
     public Maze(int m, int n) {
         this.m = m;
         this.n = n;
@@ -49,7 +63,7 @@ public class Maze {
         visited_cnt++;
 
         System.out.println("LEGEND: C- CANDIDATE, D- DECISION, R- RESULT, G- GO BACK");
-        while (histories.size() > 0 && visited_cnt < m*n) {
+        while (histories.size() > 0 && visited_cnt < m * n) {
             while (currentCell != null) {
                 currentCell = nextCell(currentCell);
                 if (currentCell != null) {
@@ -91,6 +105,46 @@ public class Maze {
             processNext(sel, currentCell);
             return sel.getCell(); // return next cell
         }
+        return null;
+    }
+
+    public void resetCellState() {
+        for (int x = 0; x < m; x++) {
+            for (int y = 0; y < n; y++) {
+                cells[x][y].setVisited(false);
+            }
+        }
+    }
+
+    public CellState eastOf(CellState current) {
+        int x = current.getX() + 1;
+        int y = current.getY();
+        if (in_scope(x, y))
+            return getCell(x, y);
+        return null;
+    }
+
+    public CellState southOf(CellState current) {
+        int x = current.getX();
+        int y = current.getY() + 1;
+        if (in_scope(x, y))
+            return getCell(x, y);
+        return null;
+    }
+
+    public CellState westOf(CellState current) {
+        int x = current.getX() - 1;
+        int y = current.getY();
+        if (in_scope(x, y))
+            return getCell(x, y);
+        return null;
+    }
+
+    public CellState northOf(CellState current) {
+        int x = current.getX();
+        int y = current.getY() - 1;
+        if (in_scope(x, y))
+            return getCell(x, y);
         return null;
     }
 
@@ -179,14 +233,18 @@ public class Maze {
                 CellState cell = cells[x][y];
                 String part = new String(token);
 
-                if (x==0 && y==0) { // in
+                if (x == 0 && y == 0) { // in
                     part = part.replaceAll("   \\|", " > |");
                 }
 
-                if (x==m-1 && y==n-1) { //out
+                if (x == m - 1 && y == n - 1) { //out
                     part = part.replaceAll("   \\|", " V |");
                 }
 
+                // draw path
+                if (cell.isInPath()) {
+                    part = part.replaceAll("   \\|", " * |");
+                }
 
                 if (cell.getSouthDoor().isOpened()) {
                     part = part.replaceAll("\\-", " ");
