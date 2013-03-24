@@ -1,8 +1,5 @@
 package io.maze.cell;
 
-import io.maze.cell.Cell;
-import io.maze.doors.*;
-
 /**
  * Created with IntelliJ IDEA.
  * User: weli
@@ -13,6 +10,8 @@ import io.maze.doors.*;
 public class CellState extends Cell {
     private boolean visited = false;
     private int x, y;
+
+    private boolean inPath = false;
 
     public boolean isVisited() {
         return visited;
@@ -36,5 +35,13 @@ public class CellState extends Cell {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public boolean isInPath() {
+        return inPath;
+    }
+
+    public void setInPath(boolean inPath) {
+        this.inPath = inPath;
     }
 }

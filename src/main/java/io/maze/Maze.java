@@ -50,7 +50,6 @@ public class Maze {
 
         System.out.println("LEGEND: C- CANDIDATE, D- DECISION, R- RESULT, G- GO BACK");
         while (histories.size() > 0 && visited_cnt < m*n) {
-
             while (currentCell != null) {
                 currentCell = nextCell(currentCell);
                 if (currentCell != null) {
