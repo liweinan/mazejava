@@ -18,7 +18,7 @@ public class Maze {
     private CellState in, out;
     private CellState[][] cells;
     private int m, n;
-    private LinkedList<CellState> histories = new LinkedList<CellState>();
+    private Stack<CellState> histories = new Stack<CellState>();
     private int visited_cnt = 0;
 
     public Maze(int m, int n) {
@@ -48,7 +48,7 @@ public class Maze {
         histories.push(currentCell);
         visited_cnt++;
 
-        System.out.println("LEGEND: C- CANDIDATE, D- DECISION, R- RESULT, F- FALLBACK");
+        System.out.println("LEGEND: C- CANDIDATE, D- DECISION, R- RESULT, G- GO BACK");
         while (histories.size() > 0 && visited_cnt < m*n) {
 
             while (currentCell != null) {
@@ -59,7 +59,7 @@ public class Maze {
                 }
             }
             currentCell = histories.pop();
-            System.out.println("F- x:" + currentCell.getX() + " y:" + currentCell.getY());
+            System.out.println("(G- x:" + currentCell.getX() + " y:" + currentCell.getY() + ")");
         }
     }
 
@@ -183,10 +183,19 @@ public class Maze {
 
         for (int y = 0; y < n; y++) {
             Queue<String> parts = new LinkedList<String>();
-
             for (int x = 0; x < m; x++) {
+
                 CellState cell = cells[x][y];
                 String part = new String(token);
+
+                if (x==0 && y==0) { // in
+                    part = part.replaceAll("   \\|", " > |");
+                }
+
+                if (x==m-1 && y==n-1) { //out
+                    part = part.replaceAll("   \\|", " V |");
+                }
+
 
                 if (cell.getSouthDoor().isOpened()) {
                     part = part.replaceAll("\\-", " ");
@@ -194,6 +203,7 @@ public class Maze {
                 if (cell.getEastDoor().isOpened()) {
                     part = part.replaceAll("\\|", " ");
                 }
+
                 parts.offer(part);
             }
 
