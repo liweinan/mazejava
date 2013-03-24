@@ -108,16 +108,8 @@ public class Maze {
             return direction;
         }
 
-        public void setDirection(Direction direction) {
-            this.direction = direction;
-        }
-
         public CellState getCell() {
             return cell;
-        }
-
-        public void setCell(CellState cell) {
-            this.cell = cell;
         }
     }
 

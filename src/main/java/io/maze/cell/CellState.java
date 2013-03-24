@@ -11,28 +11,11 @@ import io.maze.doors.*;
  * To change this template use File | Settings | File Templates.
  */
 public class CellState extends Cell {
-    public static final Door[] DOORS = {new NorthDoor(), new EastDoor(), new SouthDoor(), new WestDoor()};
     private boolean visited = false;
     private int x, y;
 
     public boolean isVisited() {
         return visited;
-    }
-
-    public Door selectDoor(Door door) {
-        if (door.getClass().equals(NorthDoor.class)) {
-            return this.getNorthDoor();
-        }
-        if (door.getClass().equals(SouthDoor.class)) {
-            return this.getNorthDoor();
-        }
-        if (door.getClass().equals(EastDoor.class)) {
-            return this.getEastDoor();
-        }
-        if (door.getClass().equals(WestDoor.class)) {
-            return this.getWestDoor();
-        }
-        return null;
     }
 
     public void setVisited(boolean visited) {

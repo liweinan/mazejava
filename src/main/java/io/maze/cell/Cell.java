@@ -23,31 +23,15 @@ public class Cell {
         return northDoor;
     }
 
-    public void setNorthDoor(NorthDoor northDoor) {
-        this.northDoor = northDoor;
-    }
-
     public EastDoor getEastDoor() {
         return eastDoor;
-    }
-
-    public void setEastDoor(EastDoor eastDoor) {
-        this.eastDoor = eastDoor;
     }
 
     public SouthDoor getSouthDoor() {
         return southDoor;
     }
 
-    public void setSouthDoor(SouthDoor southDoor) {
-        this.southDoor = southDoor;
-    }
-
     public WestDoor getWestDoor() {
         return westDoor;
-    }
-
-    public void setWestDoor(WestDoor westDoor) {
-        this.westDoor = westDoor;
     }
 }

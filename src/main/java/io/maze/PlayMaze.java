@@ -13,7 +13,7 @@ import io.maze.MazeFactory;
 public class PlayMaze {
 
     public static final void main(String[] args) {
-        Maze maze = MazeFactory.createMaze(28, 28);
+        Maze maze = MazeFactory.createMaze(3, 3);
         maze.print();
     }
 }

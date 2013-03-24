@@ -92,3 +92,28 @@ Result:
 	|               |                                   |                                   |                     V |
 	+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+   +
 
+
+From the log you can see how the maze is generated:
+
+	LEGEND: C- CANDIDATE, D- DECISION, R- RESULT, G- GO BACK
+	(C- DOWN;RIGHT;)(D- go RIGHT)(R- x:1 y:0)
+	(C- DOWN;RIGHT;)(D- go DOWN)(R- x:1 y:1)
+	(C- DOWN;LEFT;RIGHT;)(D- go RIGHT)(R- x:2 y:1)
+	(C- DOWN;UP;)(D- go DOWN)(R- x:2 y:2)
+	(C- LEFT;)(D- go LEFT)(R- x:1 y:2)
+	(C- LEFT;)(D- go LEFT)(R- x:0 y:2)
+	(C- UP;)(D- go UP)(R- x:0 y:1)
+	(G- x:0 y:1)
+	(G- x:0 y:2)
+	(G- x:1 y:2)
+	(G- x:2 y:2)
+	(G- x:2 y:1)
+	(C- UP;)(D- go UP)(R- x:2 y:0)
+	(G- x:2 y:0)
+	+---+---+---+
+	  >     |   |
+	+---+   +   +
+	|   |       |
+	+   +---+   +
+	|         V |
+	+---+---+   +
