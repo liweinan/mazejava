@@ -6,11 +6,11 @@ A maze game written in java for fun.
 
 Create a 5x5 maze:
 
-    Maze maze = MazeFactory.createMaze(5, 5);
+	   Maze maze = MazeFactory.createMaze(5, 5);
 
 Print it:
 
-    maze.print();
+	  maze.print();
 
    	+---+---+---+---+---+
    	  >     |   |       |
