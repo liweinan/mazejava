@@ -12,6 +12,8 @@ Print it:
 
 	  maze.print();
 
+Here is the result:
+
    	+---+---+---+---+---+
    	  >     |   |       |
    	+---+   +   +   +   +
